@@ -1,0 +1,86 @@
+[
+  {
+    "id": "brown-butter-cinnamon-rolls",
+    "title": "Brown butter cinnamon rolls",
+    "author": "Sunday baker",
+    "summary": "Soft morning rolls with a brown-butter cinnamon filling and a thin vanilla glaze. They ask for a slow morning and a warm oven.",
+    "ingredients": [
+      "1 cup whole milk, warmed",
+      "2 1/4 teaspoons active dry yeast",
+      "1/3 cup sugar, plus 2 tablespoons for the filling",
+      "1 egg and 1 yolk",
+      "3 cups all-purpose flour",
+      "6 tablespoons butter, browned, plus 2 tablespoons soft butter",
+      "2 teaspoons cinnamon",
+      "Pinch of salt",
+      "1 cup powdered sugar and 2 tablespoons milk for the glaze"
+    ],
+    "steps": [
+      "Stir the yeast into the warm milk with a pinch of the sugar. Let it sit until foamy.",
+      "Mix in the remaining dough sugar, egg, yolk, salt, and 2 tablespoons of the brown butter. Add the flour and knead until the dough is smooth and slightly tacky.",
+      "Cover and let the dough rise until doubled, about an hour in a warm kitchen.",
+      "Stir the cinnamon and 2 tablespoons of sugar into the rest of the brown butter.",
+      "Roll the dough into a rectangle, spread the filling to the edges, and roll it up from the long side. Cut into 12 pieces and set them in a buttered pan.",
+      "Let them puff again for 30 minutes. Bake at 350°F until the tops are golden, about 22 minutes.",
+      "Whisk the powdered sugar with milk and a splash of vanilla. Spoon it over the warm rolls."
+    ],
+    "cookTime": "3 hours",
+    "servings": "12 rolls",
+    "imageUrl": null,
+    "createdAt": "2026-02-14T15:00:00.000Z"
+  },
+  {
+    "id": "skillet-honey-cornbread",
+    "title": "Skillet honey cornbread",
+    "author": "Weeknight cook",
+    "summary": "A cast-iron cornbread with a crisp edge and a tender middle. Honey goes in the batter and again on the hot squares.",
+    "ingredients": [
+      "1 cup cornmeal",
+      "1 cup all-purpose flour",
+      "1/4 cup sugar",
+      "1 tablespoon baking powder",
+      "1/2 teaspoon salt",
+      "1 cup buttermilk",
+      "2 eggs",
+      "1/4 cup honey, plus more for the table",
+      "6 tablespoons butter"
+    ],
+    "steps": [
+      "Heat the oven to 425°F. Put the butter in a 10-inch skillet and set the skillet in the oven until the butter melts and starts to smell nutty.",
+      "Whisk the cornmeal, flour, sugar, baking powder, and salt.",
+      "Whisk the buttermilk, eggs, and honey. Stir the wet mixture into the dry until just combined, then fold in most of the melted butter, leaving a slick in the skillet.",
+      "Pour the batter into the hot skillet. Bake until the top is deep gold and a toothpick comes out clean, about 20 minutes.",
+      "Cool for 10 minutes. Cut into wedges and pass more honey."
+    ],
+    "cookTime": "35 minutes",
+    "servings": "8 wedges",
+    "imageUrl": null,
+    "createdAt": "2026-03-02T18:30:00.000Z"
+  },
+  {
+    "id": "roasted-tomato-bread-soup",
+    "title": "Roasted tomato bread soup",
+    "summary": "Tomatoes roasted until they slump, blended with a torn heel of bread so the soup turns silky without cream.",
+    "author": "The soup pot",
+    "ingredients": [
+      "2 pounds ripe tomatoes, halved",
+      "1 small onion, cut into wedges",
+      "4 garlic cloves, unpeeled",
+      "3 tablespoons olive oil",
+      "2 cups vegetable broth",
+      "2 thick slices of day-old bread, torn",
+      "Salt and black pepper",
+      "A handful of basil"
+    ],
+    "steps": [
+      "Heat the oven to 425°F. Toss the tomatoes, onion, and garlic with the olive oil and a good pinch of salt. Roast until the tomatoes collapse and the edges char, about 35 minutes.",
+      "Squeeze the garlic from its skins. Blend the vegetables with the broth and bread until mostly smooth. Leave a little texture if you like.",
+      "Pour the soup into a pot and simmer 10 minutes. Season with pepper and more salt.",
+      "Ladle into warm bowls and tear basil over the top."
+    ],
+    "cookTime": "50 minutes",
+    "servings": "4 bowls",
+    "imageUrl": null,
+    "createdAt": "2026-03-20T12:10:00.000Z"
+  }
+]
