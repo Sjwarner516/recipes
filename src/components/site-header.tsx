@@ -12,7 +12,7 @@ export function SiteHeader() {
             alt=""
             width={133}
             height={136}
-            className="size-14 shrink-0 rounded-lg bg-black object-cover ring-1 ring-honey/40"
+            className="size-16 shrink-0 rounded-lg bg-black object-cover ring-1 ring-honey/40"
           />
           <span className="min-w-0">
             <span className="block font-heading text-2xl leading-none tracking-tight">
