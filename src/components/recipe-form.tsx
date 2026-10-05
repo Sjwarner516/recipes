@@ -4,15 +4,18 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ImagePlus } from "lucide-react";
+import { useRecipes } from "@/components/recipe-provider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { linesFromText, validateRecipe } from "@/lib/validate";
 
 const fieldClass = "h-11 bg-card px-3 text-base md:text-base";
 
 export function RecipeForm() {
   const router = useRouter();
+  const { addRecipe } = useRecipes();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [field, setField] = useState<string | null>(null);
@@ -43,24 +46,41 @@ export function RecipeForm() {
     setField(null);
 
     try {
-      const response = await fetch("/api/recipes", {
-        method: "POST",
-        body: new FormData(form),
+      const data = new FormData(form);
+      const title = String(data.get("title") ?? "").trim();
+      const author = String(data.get("author") ?? "").trim();
+      const summary = String(data.get("summary") ?? "").trim();
+      const cookTime = String(data.get("cookTime") ?? "").trim();
+      const servings = String(data.get("servings") ?? "").trim();
+      const ingredients = linesFromText(String(data.get("ingredients") ?? ""));
+      const steps = linesFromText(String(data.get("steps") ?? ""));
+      const problem = validateRecipe({
+        title,
+        author,
+        summary,
+        cookTime,
+        servings,
+        ingredients,
+        steps,
       });
-      const data = (await response.json()) as {
-        error?: string;
-        field?: string;
-        recipe?: { id: string };
-      };
-      if (!response.ok || !data.recipe) {
-        setError(data.error ?? "Could not save that recipe.");
-        setField(data.field ?? null);
+      if (problem) {
+        setError(problem.message);
+        setField(problem.field);
         return;
       }
-      router.push(`/recipes/${data.recipe.id}`);
-      router.refresh();
-    } catch {
-      setError("The kitchen lost the connection. Try saving again.");
+      const image = fileInput.current?.files?.[0] ?? null;
+      const id = await addRecipe(
+        { title, author, summary, cookTime, servings, ingredients, steps },
+        image && image.size > 0 ? image : null,
+      );
+      router.push(`/recipe?id=${id}`);
+    } catch (caught) {
+      setError(
+        caught instanceof Error
+          ? caught.message
+          : "Could not save that recipe. Try again.",
+      );
+      setField("image");
     } finally {
       setPending(false);
     }
@@ -217,7 +237,9 @@ export function RecipeForm() {
           {pending ? "Saving recipe…" : "Save recipe"}
         </Button>
         <p className="text-sm text-muted-foreground">
-          {pending ? "Tucking it onto the shelf." : "It stays as you wrote it."}
+          {pending
+          ? "Tucking it onto the shelf."
+          : "Saved in this browser, on this computer."}
         </p>
       </div>
     </form>

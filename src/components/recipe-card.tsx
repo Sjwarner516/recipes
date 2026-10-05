@@ -13,7 +13,7 @@ import type { Recipe } from "@/lib/types";
 export function RecipeCard({ recipe }: { recipe: Recipe }) {
   return (
     <Link
-      href={`/recipes/${recipe.id}`}
+      href={`/recipe?id=${recipe.id}`}
       className="group block h-full rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
     >
       <Card className="h-full pt-0 transition duration-200 group-hover:-translate-y-0.5 group-hover:ring-primary/30">

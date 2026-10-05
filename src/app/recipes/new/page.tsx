@@ -19,7 +19,7 @@ export default function NewRecipePage() {
       <h1 className="mt-4 font-heading text-4xl md:text-5xl">Share a recipe</h1>
       <p className="mt-3 max-w-xl text-muted-foreground">
         Title, a few lines about it, the ingredients, and the method. The photo
-        can wait, or skip it entirely.
+        can wait, or skip it entirely. What you save stays in this browser.
       </p>
       <div className="mt-8 rounded-3xl bg-card/80 p-4 ring-1 ring-foreground/10 sm:p-6">
         <RecipeForm />

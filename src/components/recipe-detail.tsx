@@ -1,31 +1,52 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { DeleteRecipeButton } from "@/components/delete-recipe-button";
+import { useRecipes } from "@/components/recipe-provider";
+import { buttonVariants } from "@/components/ui/button";
 import { formatPosted } from "@/lib/format";
-import { getRecipe } from "@/lib/recipes";
 
-export const dynamic = "force-dynamic";
+export function RecipeDetail() {
+  const params = useSearchParams();
+  const id = params.get("id");
+  const { recipes, ready, error } = useRecipes();
 
-type PageProps = {
-  params: Promise<{ id: string }>;
-};
+  if (error) {
+    return (
+      <main className="mx-auto max-w-xl px-4 py-20 text-center">
+        <p role="alert">{error}</p>
+      </main>
+    );
+  }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { id } = await params;
-  const recipe = await getRecipe(id);
-  if (!recipe) return { title: "Recipe not found" };
-  return {
-    title: recipe.title,
-    description: recipe.summary,
-  };
-}
+  if (!ready || !recipes) {
+    return (
+      <main className="mx-auto max-w-4xl px-4 py-14" aria-busy="true">
+        <p className="text-sm text-muted-foreground">Setting the table…</p>
+        <div className="mt-4 h-12 w-2/3 max-w-lg animate-pulse rounded-lg bg-muted" />
+      </main>
+    );
+  }
 
-export default async function RecipePage({ params }: PageProps) {
-  const { id } = await params;
-  const recipe = await getRecipe(id);
-  if (!recipe) notFound();
+  const recipe = recipes.find((item) => item.id === id);
+  if (!recipe) {
+    return (
+      <main className="mx-auto max-w-xl px-4 py-20 text-center">
+        <p className="text-sm font-medium tracking-[0.16em] text-primary uppercase">
+          Missing
+        </p>
+        <h1 className="mt-3 font-heading text-4xl">That recipe isn’t on the shelf</h1>
+        <p className="mt-3 text-muted-foreground">
+          It may have been removed, or the link is a little off.
+        </p>
+        <Link href="/" className={buttonVariants({ className: "mt-6 h-11 px-5" })}>
+          Back to the shelf
+        </Link>
+      </main>
+    );
+  }
 
   const details = [
     recipe.author,
@@ -57,6 +78,7 @@ export default async function RecipePage({ params }: PageProps) {
           alt={recipe.title}
           width={1600}
           height={1200}
+          unoptimized
           className="mt-8 h-auto max-h-[32rem] w-full rounded-3xl object-cover ring-1 ring-foreground/10"
         />
       ) : (
@@ -82,9 +104,7 @@ export default async function RecipePage({ params }: PageProps) {
           <ol className="mt-4 space-y-4">
             {recipe.steps.map((step, index) => (
               <li key={`${index}-${step}`} className="flex gap-4">
-                <span className="font-heading text-xl text-primary">
-                  {index + 1}
-                </span>
+                <span className="font-heading text-xl text-primary">{index + 1}</span>
                 <p className="pt-0.5 leading-7">{step}</p>
               </li>
             ))}

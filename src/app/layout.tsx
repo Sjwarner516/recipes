@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Outfit } from "next/font/google";
+import { RecipeProvider } from "@/components/recipe-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
@@ -31,9 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} ${fraunces.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
-        <SiteHeader />
-        <div className="flex-1">{children}</div>
-        <SiteFooter />
+        <RecipeProvider>
+          <SiteHeader />
+          <div className="flex-1">{children}</div>
+          <SiteFooter />
+        </RecipeProvider>
       </body>
     </html>
   );

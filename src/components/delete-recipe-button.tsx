@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useRecipes } from "@/components/recipe-provider";
 import { Button } from "@/components/ui/button";
 
 export function DeleteRecipeButton({ id }: { id: string }) {
   const router = useRouter();
+  const { removeRecipe } = useRecipes();
   const [confirming, setConfirming] = useState(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -14,16 +16,12 @@ export function DeleteRecipeButton({ id }: { id: string }) {
     setPending(true);
     setError(null);
     try {
-      const response = await fetch(`/api/recipes/${id}`, { method: "DELETE" });
-      if (!response.ok) {
-        const data = (await response.json()) as { error?: string };
-        setError(data.error ?? "Could not remove that recipe.");
-        return;
-      }
+      await removeRecipe(id);
       router.push("/");
-      router.refresh();
-    } catch {
-      setError("The kitchen lost the connection. Try again.");
+    } catch (caught) {
+      setError(
+        caught instanceof Error ? caught.message : "Could not remove that recipe.",
+      );
     } finally {
       setPending(false);
     }
