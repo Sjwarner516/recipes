@@ -17,8 +17,8 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   title: {
-    default: "Roud",
-    template: "%s · Roud",
+    default: "Lynda B's Recipes",
+    template: "%s · Lynda B's Recipes",
   },
   description:
     "Share a recipe and a photo, if you have one. A warm kitchen for dishes worth passing on.",

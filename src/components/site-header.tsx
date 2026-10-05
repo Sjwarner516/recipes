@@ -11,7 +11,7 @@ export function SiteHeader() {
           <Image
             src={logo}
             alt=""
-            className="size-16 shrink-0 rounded-lg bg-black object-cover ring-1 ring-honey/40"
+            className="size-16 shrink-0 rounded-lg bg-white object-cover ring-2 ring-white"
           />
           <span className="min-w-0">
             <span className="block font-heading text-xl leading-tight tracking-tight sm:text-2xl">
