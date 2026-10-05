@@ -1,4 +1,4 @@
-# Roud
+# Lynda B's Recipes
 
 A warm recipe shelf. People can write down a recipe and attach a photo if they want one.
 

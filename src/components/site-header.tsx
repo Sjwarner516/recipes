@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import logo from "../../public/brand/logo.png";
 import { Button } from "@/components/ui/button";
 
 export function SiteHeader() {
@@ -8,15 +9,13 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="flex min-w-0 items-center gap-3">
           <Image
-            src="/brand/logo.png"
+            src={logo}
             alt=""
-            width={133}
-            height={136}
             className="size-16 shrink-0 rounded-lg bg-black object-cover ring-1 ring-honey/40"
           />
           <span className="min-w-0">
-            <span className="block font-heading text-2xl leading-none tracking-tight">
-              Roud
+            <span className="block font-heading text-xl leading-tight tracking-tight sm:text-2xl">
+              Lynda B&apos;s Recipes
             </span>
             <span className="mt-1 hidden text-xs tracking-wide text-honey sm:block">
               Recipes, still warm

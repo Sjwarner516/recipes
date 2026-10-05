@@ -4,7 +4,7 @@ import { RecipeForm } from "@/components/recipe-form";
 
 export const metadata: Metadata = {
   title: "Share a recipe",
-  description: "Add a recipe to the Roud shelf, with a photo if you want one.",
+  description: "Add a recipe to Lynda B's Recipes, with a photo if you want one.",
 };
 
 export default function NewRecipePage() {

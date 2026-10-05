@@ -4,7 +4,7 @@ import { RecipeDetail } from "@/components/recipe-detail";
 
 export const metadata: Metadata = {
   title: "Recipe",
-  description: "A recipe from the Roud shelf.",
+  description: "A recipe from Lynda B's Recipes.",
 };
 
 export default function RecipePage() {
